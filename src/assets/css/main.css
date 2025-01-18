@@ -1,0 +1,24 @@
+.crumbs {
+    margin: 5px 0 10px 10px;
+}
+
+.breadcrumb-icon {
+    vertical-align: middle;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.breadcrumb-text {
+    vertical-align: middle;
+}
+
+.container {
+    padding: 10px 30px 10px 30px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.table {
+    padding-top: 10px;
+}
