@@ -263,7 +263,7 @@
             <el-icon class="header-icon">
               <Notebook/>
             </el-icon>
-            <div class="text">课程管理</div>
+            <div class="text">信息维护</div>
           </div>
         </template>
         <div class="box">
