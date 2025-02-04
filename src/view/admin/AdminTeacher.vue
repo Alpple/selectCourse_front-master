@@ -193,7 +193,7 @@ const deleteItem = async (id: number) => {
     cancelButtonText: '取消',
     type: 'warning'
   })
-  api.deleteItem(id).then(res => {
+  api.deleteItem(id).then(() => {
     ElMessage({message: "删除成功", type: 'success'})
     getPage(pageIndex.value)
   })

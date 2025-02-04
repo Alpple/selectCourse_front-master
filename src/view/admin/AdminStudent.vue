@@ -181,11 +181,11 @@ const save = () => {
     entityForm.password = "A12345678"
   }
   if (entityForm.id === -1) {
-    api.create(entityForm).then(res => {
+    api.create(entityForm).then(() => {
       finishSave()
     })
   } else {
-    api.update(entityForm).then(res => {
+    api.update(entityForm).then(() => {
       finishSave()
     })
   }
