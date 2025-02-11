@@ -1,5 +1,6 @@
 import * as ajax from "../../common/ajax.ts";
 
+// @ts-ignore
 export const get = (id:number) => ajax.get("/admin/student/" + id);
 
 export const create = (entity:any) => ajax.post("/admin/student", entity);

@@ -38,7 +38,6 @@
 
         <el-table-column align="center" label="操作" width="200px">
           <template #default="scope">
-            <el-button @click="edit(scope.row.id)" size="small" type="success" :icon="Edit">编辑</el-button>
             <el-button @click="deleteItem(scope.row.id)" size="small" type="danger" :icon="Delete">删除</el-button>
           </template>
         </el-table-column>
@@ -60,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import {Delete, Edit, Plus, Search} from "@element-plus/icons-vue";
+import {Delete} from "@element-plus/icons-vue";
 import {computed, onMounted, reactive, ref} from "vue";
 import * as api from "@/api/admin/course";
 import {ElMessage, ElMessageBox} from "element-plus";
@@ -74,11 +73,6 @@ const tableData = ref([])
 const pageIndex = ref(1)
 const pageSize = api.pageSize
 const pageCount = ref(1)
-const editing = ref(false)
-const teachers = reactive([])
-const courseDay = ref("")
-const courseTime = ref("")
-const courseLength = ref(0)
 
 const sortedTableData = computed(() => {
   return tableData.value.slice() // 返回一个新数组，避免直接修改原数据
@@ -94,7 +88,7 @@ const handleSortChange = (sort: any) => {
 
 const query = () => {
   api.getPageCount(queryForm.departmentName, queryForm.teacherName, queryForm.name)
-      .then(res => {
+      .then((res:any) => {
         pageCount.value = res
         pageIndex.value = 1
         getPage(1)
@@ -103,7 +97,7 @@ const query = () => {
 
 const getPage = (pageIndex: number) => {
   api.getPage(queryForm.departmentName, queryForm.teacherName, queryForm.name)
-      .then(res => {
+      .then((res:any) => {
         tableData.value = res
       })
 }
@@ -115,7 +109,7 @@ const deleteItem = async (id: number) => {
     type: 'warning'
   })
 
-  api.deleteItem(id).then(res => {
+  api.deleteItem(id).then((res:any) => {
     ElMessage({message: "删除成功", type: 'success'})
     getPage(pageIndex.value)
   })
