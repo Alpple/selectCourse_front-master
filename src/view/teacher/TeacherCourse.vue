@@ -72,7 +72,7 @@
           <el-input type="number" v-model="courseLength"/>
         </el-form-item>
         <el-form-item label="上课地点">
-          <el-input type="number" v-model="entityForm.location"/>
+          <el-input v-model="entityForm.location"/>
         </el-form-item>
         <el-form-item label="学分">
           <el-input type="number" v-model="entityForm.credit"/>
