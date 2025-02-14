@@ -94,7 +94,7 @@
 </template>
 
 <script setup lang="ts">
-import {Delete, Edit, Plus} from "@element-plus/icons-vue";
+import { Plus} from "@element-plus/icons-vue";
 import {computed, onMounted, reactive, ref} from "vue";
 import * as api from "@/api/teacher/course.ts"
 import * as api2 from "@/api/teacher/info.ts"
