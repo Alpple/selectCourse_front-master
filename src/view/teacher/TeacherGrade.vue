@@ -61,7 +61,6 @@
       />
     </el-row>
 
-
     <el-dialog v-model="editing" title="编辑" width="30%">
       <el-form :model="entityForm" label-width="70px" ref="form">
         <el-form-item label="选课id">
