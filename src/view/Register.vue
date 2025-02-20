@@ -1,26 +1,36 @@
 <template>
   <div class="register-wrap">
     <el-form
-        :model="form"
-        :rules="rules"
         class="register-form"
         label-position="left"
-        ref="formRef"
         label-width="5px"
     >
       <div class="form-title">注册用户</div>
-      <el-form-item prop="swnumber">
-        <el-input v-model="form.swnumber" placeholder="学工号" clearable prefix-icon="User"/>
-      </el-form-item>
-      <el-form-item prop="password">
-        <el-input v-model="form.password" placeholder="密码" clearable show-password prefix-icon="Lock"/>
-      </el-form-item>
-      <el-form-item prop="userType">
-        <el-radio-group v-model="userType">
-          <el-radio value="1">学生</el-radio>
-          <el-radio value="2">教师</el-radio>
-        </el-radio-group>
-      </el-form-item>
+          <el-form-item prop="swnumber">
+            <el-input v-model="entityForm.swnumber" placeholder="学号" clearable prefix-icon="User"/>
+          </el-form-item>
+          <el-form-item prop="name">
+            <el-input v-model="entityForm.name" placeholder="姓名" clearable prefix-icon="Notification"/>
+          </el-form-item>
+          <el-form-item>
+            <el-select placeholder="请选择班级" v-model="entityForm.classId">
+              <el-option
+                  v-for="(item,index) in  classes"
+                  :key="index"
+                  :label="item.name"
+                  :value="item.id"
+              />
+            </el-select>
+          </el-form-item>
+          <el-form-item prop="password">
+            <el-input v-model="entityForm.password" placeholder="登录密码" clearable show-password prefix-icon="Lock"/>
+          </el-form-item>
+          <el-form-item>
+            <el-radio-group v-model="entityForm.sex">
+              <el-radio :label="1">男</el-radio>
+              <el-radio :label="0">女</el-radio>
+            </el-radio-group>
+          </el-form-item>
 
       <div class="register-btn" v-loading="loading">
         <el-button type="success" style="width: 100px" @click="register">注册</el-button>
@@ -37,64 +47,33 @@
 
 <script setup lang="ts">
 import {Pointer} from "@element-plus/icons-vue";
-import {reactive, ref} from "vue";
-import {ElMessage, FormInstance} from "element-plus";
-import {registerStudent} from "@/api/user.ts";
+import {onMounted, reactive, ref} from "vue";
+import { FormInstance} from "element-plus";
+import type { TabsPaneContext } from 'element-plus'
+import * as registerStudent from "@/api/user.ts"
+import * as classApi from "@/api/admin/class"
 
 defineOptions({
   name: 'register'
 })
 
 const loading = ref(false)
-const formRef = ref<FormInstance>()
-
-const form = reactive<any>({
-  swnumber: '',
-  password: '',
-})
-
-const userType = ref('1')
-
-const rules = reactive<any>({
-  swnumber: [
-    {message: '请输入学工号 ', trigger: 'blur'},
-    {min: 12, max: 12, message: '学工号长度必须为12位'}
-  ],
-  password: [
-    {message: '请输入密码', trigger: 'blur'},
-    {require: true, min: 8, max: 12, message: '密码必须位8到12位的数字、字母或特殊符号的混合形式'}
-  ],
-})
+let classes = reactive([])
+let entityForm = reactive({})
 
 const register = () => {
-  const valid = formRef.value?.validate()
-  loading.value = true
 
-  if (valid) {
-    if (userType.value === '1') {
-      registerStudent(
-          form.swnumber,
-          form.password,
-          userType.value,
-      ).then(res=>{
-        ElMessage.success('注册用户成功',res.swnumber)
-      })
-      loading.value = false
-    } else if (userType.value === '2') {
-
-      ElMessage.success('注册用户成功')
-      loading.value = false
-    }
-
-    rest()
-    console.log(userType.value)
-  }
 }
 
-const rest = () => {
-  form.swnumber = ''
-  form.password = ''
+const getClasses = () => {
+ /* classApi.listName().then((res:any) => {
+    classes = res
+  })*/
 }
+
+onMounted(() => {
+  getClasses()
+})
 </script>
 
 <style scoped lang="scss">
@@ -122,7 +101,7 @@ const rest = () => {
       font-size: 20px;
       font-weight: 600;
       color: #08c11f;
-      border-bottom: 1px solid #ddd;
+      //border-bottom: 1px solid #ddd;
     }
 
     .user-type-item {

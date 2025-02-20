@@ -10,10 +10,3 @@ export const login = (swnumber: string, password: string, userType: number) =>
 export const getLoginStatus = () => pureGet("/user/login/status")
 
 export const logout = () => pureGet("/user/logout")
-
-export const registerStudent=(swnumber: string, password: string, userType: number)=>
-    post("/user/register/student",{
-    swnumber: swnumber,
-    password: password,
-    userType: userType
-})

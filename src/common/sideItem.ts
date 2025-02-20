@@ -52,6 +52,12 @@ const sideItem: SideItem = {
             permission: Permission.no
         },
         {
+            index: "/student/assess",
+            title: "教师评价",
+            userType: UserType.student,
+            permission: Permission.no
+        },
+        {
             index: "/student/info",
             title: "信息维护",
             userType: UserType.student,

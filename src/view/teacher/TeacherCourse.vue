@@ -36,6 +36,12 @@
         <el-table-column label="上课时间" prop="time"/>
         <el-table-column label="上课地点" prop="location"/>
         <el-table-column label="选课人数" prop="selectedCount"/>
+
+        <el-table-column align="center" label="操作" width="200px">
+          <template #default="scope">
+            <el-button @click="get(scope.row.id)" size="small" type="success" :icon="Search">教评查询</el-button>
+          </template>
+        </el-table-column>
       </el-table>
     </div>
 
@@ -94,15 +100,19 @@
 </template>
 
 <script setup lang="ts">
-import { Plus} from "@element-plus/icons-vue";
+import {Edit, Plus, Search} from "@element-plus/icons-vue";
 import {computed, onMounted, reactive, ref} from "vue";
 import * as api from "@/api/teacher/course.ts"
 import * as api2 from "@/api/teacher/info.ts"
+
 import {ElMessage} from "element-plus";
+import {useRouter} from "vue-router";
 
 defineOptions({
   name: "TeacherCourse",
 })
+
+const router = useRouter()
 
 const tableData = ref([])
 const editing = ref(false)
@@ -168,6 +178,10 @@ const create = () => {
   courseLength.value = 2
 
   editing.value = true
+}
+
+const get = (id: number) => {
+  router.push({ path: '/teacher/assess', query: { id } });
 }
 
 const save = () => {

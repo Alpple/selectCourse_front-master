@@ -45,7 +45,7 @@ const redirectHome = (userType: number) => {
 
 // 在组件挂载时获取登录状态
 onMounted(() => {
-  getLoginStatus().then(res => {
+  getLoginStatus().then((res:any) => {
     store.login(res) // 调用 Pinia 的登录方法
     if (!res.loggedIn) {
       router.push({name: 'login'})

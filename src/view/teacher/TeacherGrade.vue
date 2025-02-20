@@ -34,7 +34,7 @@
             stripe
             @sort-change="handleSortChange"
         >
-          <el-table-column label="选课id" prop="id" sortable/>
+          <el-table-column label="选课id" prop="studentCourseId" sortable align="center"/>
           <el-table-column label="课程名" prop="courseName"/>
           <el-table-column label="学生姓名" prop="studentName"/>
           <el-table-column label="日常分" prop="dailyScore"/>
@@ -43,7 +43,7 @@
 
           <el-table-column align="center" label="操作" width="200px">
             <template #default="scope">
-              <el-button @click="edit(scope.row.id)" size="small" type="success" :icon="Edit">打分</el-button>
+              <el-button @click="edit(scope.row.studentCourseId)" size="small" type="success" :icon="Edit">打分</el-button>
             </template>
           </el-table-column>
         </el-table>

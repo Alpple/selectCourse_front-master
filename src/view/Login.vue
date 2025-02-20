@@ -44,9 +44,9 @@
           <el-button type="primary" @click="submit">登录</el-button>
         </div>
       </el-form>
-      <div class="register">
+<!--      <div class="register">
         <el-link :icon="Pointer" type="danger" style="font-size:17px;font-weight: bold" @click="$router.push({name:'register'})">点击注册</el-link>
-      </div>
+      </div>-->
     </div>
   </div>
 
@@ -116,7 +116,7 @@ const submit = () => {
         form.swnumber,
         form.password,
         userType.value
-    ).then(res => {
+    ).then((res:any) => {
       ElMessage.success('登录成功:' + res.swnumber)
       console.log('跳转页面成功', res)
       // 使用pinia进行登录

@@ -32,6 +32,11 @@ const routes: Array<RouteRecordRaw> = [
                 component:()=>import('@/view/student/StudentScore.vue')
             },
             {
+                path:'/student/assess',
+                name:'student-assess',
+                component:()=>import('@/view/student/StudentAssess.vue')
+            },
+            {
                 path:'/student/info',
                 name:'student-info',
                 component:()=>import('@/view/student/StudentInfo.vue')
@@ -47,6 +52,11 @@ const routes: Array<RouteRecordRaw> = [
                 component:()=>import('@/view/teacher/TeacherCourse.vue')
             },
             {
+                path:'/teacher/assess',
+                name:'teacherAssess',
+                component:()=>import('@/view/teacher/TeacherAssess.vue')
+            },
+            {
                 path:'/teacher/timetable',
                 name:'teacher-timetable',
                 component:()=>import('@/view/teacher/TeacherTimeTable.vue')
@@ -60,7 +70,7 @@ const routes: Array<RouteRecordRaw> = [
                 path:'/teacher/info',
                 name:'teacher-info',
                 component:()=>import('@/view/teacher/TeacherInfo.vue')
-            },
+               },
             {
                 path:'/admin',
                 name:'admin-home',
@@ -103,11 +113,11 @@ const routes: Array<RouteRecordRaw> = [
         name:'login',
         component:()=>import('@/view/Login.vue')
     },
-    {
+/*    {
         path:'/register',
         name:'register',
         component:()=>import('@/view/Register.vue')
-    }
+    }*/
 ]
 
 const router = createRouter({
