@@ -98,7 +98,7 @@ const save = () => {
   const entity = {
     ...entityForm,
     courseId: entityForm.courseId,
-    studentId: entityForm.studentId
+    // studentId: entityForm.studentId
   }
 
   api.save(entity).then(()=>{
@@ -122,7 +122,7 @@ const edit = (row) => {
 
   // 赋值 courseId 和 studentId
   entityForm.courseId = row.courseId
-  entityForm.studentId = row.studentId
+  // entityForm.studentId = row.studentId
 
   editing.value = true
 }
