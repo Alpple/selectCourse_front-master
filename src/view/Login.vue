@@ -44,9 +44,9 @@
           <el-button type="primary" @click="submit">登录</el-button>
         </div>
       </el-form>
-<!--      <div class="register">
+      <div class="register">
         <el-link :icon="Pointer" type="danger" style="font-size:17px;font-weight: bold" @click="$router.push({name:'register'})">点击注册</el-link>
-      </div>-->
+      </div>
     </div>
   </div>
 

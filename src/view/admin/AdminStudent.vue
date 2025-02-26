@@ -60,9 +60,9 @@
       <el-pagination
           v-model:current-page="pageIndex"
           :page-size="pageSize"
-          :total="pageSize * pageCount"
-          @current-change="getPage"
-          background
+            :total="pageSize * pageCount"
+            @current-change="getPage"
+            background
           layout="prev, pager, next"
       />
     </el-row>

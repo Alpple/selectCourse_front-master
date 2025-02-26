@@ -5,9 +5,9 @@
         label-position="left"
         label-width="5px"
     >
-      <div class="form-title">注册用户</div>
-          <el-form-item prop="swnumber">
-            <el-input v-model="entityForm.swnumber" placeholder="学号" clearable prefix-icon="User"/>
+      <div class="form-title">注册学生用户</div>
+          <el-form-item prop="number">
+            <el-input v-model="entityForm.number" placeholder="学号" clearable prefix-icon="User"/>
           </el-form-item>
           <el-form-item prop="name">
             <el-input v-model="entityForm.name" placeholder="姓名" clearable prefix-icon="Notification"/>
@@ -25,7 +25,7 @@
           <el-form-item prop="password">
             <el-input v-model="entityForm.password" placeholder="登录密码" clearable show-password prefix-icon="Lock"/>
           </el-form-item>
-          <el-form-item>
+          <el-form-item label="性 别：" label-width="60" style="padding-left: 5px">
             <el-radio-group v-model="entityForm.sex">
               <el-radio :label="1">男</el-radio>
               <el-radio :label="0">女</el-radio>
@@ -48,27 +48,44 @@
 <script setup lang="ts">
 import {Pointer} from "@element-plus/icons-vue";
 import {onMounted, reactive, ref} from "vue";
-import { FormInstance} from "element-plus";
-import type { TabsPaneContext } from 'element-plus'
-import * as registerStudent from "@/api/user.ts"
 import * as classApi from "@/api/admin/class"
+import * as studentApi from "@/api/admin/student.ts"
+import {ElMessage} from "element-plus";
+import {useRouter} from "vue-router";
 
 defineOptions({
   name: 'register'
 })
 
+const router = useRouter()
 const loading = ref(false)
-let classes = reactive([])
+let classes = ref([])
 let entityForm = reactive({})
 
 const register = () => {
+  studentApi.create(entityForm).then(() => {
+    finishSave()
+  })
+}
 
+// 完成保存
+const finishSave = () => {
+  ElMessage({message: "注册成功，将前往登录界面~", type: 'success'})
+  router.push({name: 'login'})
 }
 
 const getClasses = () => {
- /* classApi.listName().then((res:any) => {
-    classes = res
-  })*/
+  entityForm.number = ""
+  entityForm.name = ""
+  entityForm.classId = ""
+  entityForm.password = ""
+  entityForm.sex = 1
+  entityForm.id = -1
+
+  classApi.listName().then((res:any) => {
+    classes.value = res
+    console.log(res)
+  })
 }
 
 onMounted(() => {

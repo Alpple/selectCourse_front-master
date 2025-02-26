@@ -113,7 +113,7 @@ const finishSave = () => {
   editing.value = false
 }
 
-const edit = (row) => {
+const edit = (row:any) => {
   entityForm.quality = 0
   entityForm.style = 0
   entityForm.interaction = 0
