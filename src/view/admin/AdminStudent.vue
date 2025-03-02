@@ -73,7 +73,7 @@
           <el-input v-model="entityForm.number" clearable/>
         </el-form-item>
         <el-form-item label="姓名">
-          <el-input v-model="entityForm.name" clearable/>
+          <el-input v-model="entityForm.name" clea rable/>
         </el-form-item>
         <el-form-item label="所属班级">
           <el-select placeholder="请选择班级" v-model="entityForm.classId">

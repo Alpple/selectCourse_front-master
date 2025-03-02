@@ -71,7 +71,7 @@ const sideItem: SideItem = {
         },
         {
             index: "/teacher/course",
-            title: "授课查询",
+            title: "授课管理",
             userType: UserType.teacher,
             permission: Permission.no
         },
