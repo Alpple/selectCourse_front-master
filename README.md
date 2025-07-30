@@ -6,7 +6,7 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 
 ### 部分截图：
 用户注册：
-<img width="957" height="504" alt="image" src="https://github.com/user-attachments/assets/423d1b6a-afd3-4cef-aa62-de810299e121" /></br>
+<img width="897" height="522" alt="image" src="https://github.com/user-attachments/assets/168d8135-ce1b-412d-9f71-9f332f65704f" /></br>
 用户登录：
 <img width="957" height="504" alt="image" src="https://github.com/user-attachments/assets/45987876-294e-4bb7-b02d-dc4c99a4053c" /></br>
 学院管理：
